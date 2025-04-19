@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring-deployment
+  namespace: my-namespace
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: test-spring-webapp
+  template:
+    metadata:
+      labels:
+        app: test-spring-webapp
+    spec:
+      containers:
+        - name: test-spring-container
+          image: testacrsampleweb.azurecr.io/sample-web
+          ports:
+            - containerPort: 8080
